@@ -91,18 +91,29 @@ public class OrderService {
                 return;
             }
         }
-        throw new BookNotFoundException("제목을 다시 입력해주세요 !");
+        throw new BookNotFoundException("없는 책이에요 !");
     }
 
 
     // 5. 장바구니 빼기
-    public void orderDelete(String bName) {
+    public void orderDelete(String bName) throws BookNotFoundException {
+        for(OrderList orderList : orderLists) {
+            if(orderList.getBook().getBName().equals(bName)) {
+                int index = orderLists.indexOf(orderList);
+                orderLists.remove(index);
+                EndView.successView(bName + " 이 장바구니에서 삭제됐어요 !");
+                return;
+            }
+        }
+        throw new BookNotFoundException("없는 책이에요 !");
     }
+
 
     // 6. 장바구니 가격 순으로 정렬(오름차순)
     public void orderSort(){
     }
 
+    
     // 7. 주문하기
     public void buyOrder(){
         orderLists.removeAll(orderLists);

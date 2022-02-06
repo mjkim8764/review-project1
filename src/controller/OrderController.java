@@ -87,7 +87,12 @@ public class OrderController {
 
     // 5. 장바구니 빼기
     public void orderDelete(String bName) {
-        service.orderDelete(bName);
+        try {
+            service.orderDelete(bName);
+        } catch (BookNotFoundException e) {
+            e.printStackTrace();
+            EndView.failView(e.getMessage());
+        }
     }
 
 
