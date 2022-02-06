@@ -20,6 +20,10 @@ public class OrderList {
 
     @Override
     public String toString(){
-        return " ";
+        StringBuilder builder = new StringBuilder();
+        builder.append("주문 번호 : ")
+                .append(listNo)
+                .append("\n");
+        return builder.toString() + book.toString();
     }
 }
