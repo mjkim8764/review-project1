@@ -101,6 +101,7 @@ public class StartView {
                     orderController.orderSort();
                     break;
                 case "7":        // 7. 주문하기
+                    orderController.buyOrder();
                     break;
             }
         }

@@ -151,7 +151,30 @@ public class OrderService {
 
     // 7. 주문하기
     public void buyOrder(){
-        orderLists.removeAll(orderLists);
+
+        if(orderLists.size() == 0) {
+            EndView.failView("장바구니에 책이 없어요 !");
+            return;
+        }
+        else {
+            orderTotalPrice = 0;
+
+            for(OrderList orderList : orderLists) {
+                orderTotalPrice += orderList.getBook().getBPrice();
+            }
+
+            EndView.printMoney(customers.get(cIndex).getCMoney(), orderTotalPrice);
+
+            if(customers.get(cIndex).getCMoney() >= orderTotalPrice) {
+                int change = customers.get(cIndex).getCMoney() - orderTotalPrice;
+                orderLists.removeAll(orderLists);
+
+                EndView.successView("주문이 완료되었습니다 ! 고객님의 남은 금액은 " + change + "원 입니다 !");
+                customers.get(cIndex).setCMoney(change);
+            }
+
+        }
+
     }
 
 }

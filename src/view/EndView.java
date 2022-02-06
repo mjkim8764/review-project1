@@ -48,8 +48,8 @@ public class EndView {
     // 잔액, 장바구니 총 금액 출력
     public static void printMoney(int cMoney, int orderTotalPrice){
 
-        System.out.println("현재 금액 : " + cMoney);
-        System.out.println("장바구니 총 금액 " + orderTotalPrice);
+        System.out.println("현재 금액 : " + cMoney + "원");
+        System.out.println("장바구니 총 금액 : " + orderTotalPrice + "원");
         if (cMoney < orderTotalPrice) {
             failView("잔액이 부족합니다 !");
         }
