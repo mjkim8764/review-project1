@@ -82,7 +82,16 @@ public class OrderService {
 
 
     // 4. 장바구니 넣기
-    public void orderInsert(String bName) {
+    public void orderInsert(String bName) throws BookNotFoundException {
+        for(Book book : books) {
+            if(book.getBName().equals(bName)) {
+                int cnt = orderLists.size();
+                orderLists.add(new OrderList(cnt + 1, book));
+                EndView.successView("장바구니에 책이 추가되었습니다.");
+                return;
+            }
+        }
+        throw new BookNotFoundException("제목을 다시 입력해주세요 !");
     }
 
 

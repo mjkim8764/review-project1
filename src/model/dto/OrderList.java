@@ -13,7 +13,7 @@ import lombok.Setter;
 public class OrderList {
 
     // 주문번호
-    private String listNo;
+    private int listNo;
 
     // 주문한 책
     private Book book;

@@ -76,7 +76,12 @@ public class OrderController {
 
     // 4. 장바구니 넣기
     public void orderInsert(String bName) {
-        service.orderInsert(bName);
+        try {
+            service.orderInsert(bName);
+        } catch (BookNotFoundException e) {
+            e.printStackTrace();
+            EndView.failView(e.getMessage());
+        }
     }
 
 
