@@ -39,12 +39,8 @@ public class EndView {
     // 장바구니 리스트 출력
     public static void allOrderView(ArrayList<OrderList> orderLists) {
 
-        if(orderLists.size() == 0)
-            System.out.println("장바구니에 책이 없어요 !");
-        else {
-            for(OrderList orderList : orderLists) {
-                System.out.println(orderList);
-            }
+        for(OrderList orderList : orderLists) {
+            System.out.println(orderList);
         }
 
     }
@@ -54,6 +50,7 @@ public class EndView {
     public static void successView(String msg){
         System.out.println(msg);
     }
+
 
     // 실패 메세지
     public static void failView(String msg){

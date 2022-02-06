@@ -77,7 +77,12 @@ public class OrderService {
 
     // 3. 장바구니 보기
     public void showAllOrders(){
-        EndView.allOrderView(orderLists);
+        if(orderLists.size() == 0) {
+            EndView.failView("장바구니에 책이 없어요 !");
+        }
+        else {
+            EndView.allOrderView(orderLists);
+        }
     }
 
 
@@ -113,7 +118,7 @@ public class OrderService {
     public void orderSort(){
     }
 
-    
+
     // 7. 주문하기
     public void buyOrder(){
         orderLists.removeAll(orderLists);
