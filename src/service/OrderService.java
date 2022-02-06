@@ -21,6 +21,9 @@ public class OrderService {
         return instance;
     }
 
+    private int cIndex = -1;
+    private int orderTotalPrice = 0;
+
     public ArrayList<Customer> customers = new ArrayList<>();
     private ArrayList<Book> books = new ArrayList<>();
     private ArrayList<OrderList> orderLists = new ArrayList<>();
@@ -40,6 +43,7 @@ public class OrderService {
     public void customerCheck(String id, String pw) throws UserNotFoundException {
         for (Customer customer : customers) {
             if(customer.getCId().equals(id) && customer.getCPw().equals(pw)) {
+                cIndex = customers.indexOf(customer);
                 return;
             }
         }
@@ -83,6 +87,11 @@ public class OrderService {
         }
         else {
             EndView.allOrderView(orderLists);
+            orderTotalPrice = 0;
+            for(OrderList orderList : orderLists) {
+                orderTotalPrice += orderList.getBook().getBPrice();
+            }
+            EndView.printMoney(customers.get(cIndex).getCMoney(), orderTotalPrice);
         }
     }
 
