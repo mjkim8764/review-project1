@@ -37,9 +37,15 @@ public class EndView {
 
     // 장바구니 리스트 출력
     public static void allOrderView(ArrayList<OrderList> orderLists) {
-        for(OrderList orderList : orderLists) {
-            System.out.println(orderList);
+
+        if(orderLists.size() == 0)
+            System.out.println("장바구니에 책이 없어요 !");
+        else {
+            for(OrderList orderList : orderLists) {
+                System.out.println(orderList);
+            }
         }
+
     }
 
 

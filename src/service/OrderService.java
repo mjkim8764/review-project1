@@ -69,9 +69,7 @@ public class OrderService {
 
     // 3. 장바구니 보기
     public void showAllOrders(){
-        for(OrderList orderList : orderLists) {
-            System.out.println(orderList);
-        }
+        EndView.allOrderView(orderLists);
     }
 
 
