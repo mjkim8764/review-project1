@@ -88,6 +88,7 @@ public class OrderService {
 
     // 4. 장바구니 넣기
     public void orderInsert(String bName) throws BookNotFoundException {
+
         for(Book book : books) {
             if(book.getBName().equals(bName)) {
                 int cnt = orderLists.size();
@@ -97,19 +98,28 @@ public class OrderService {
             }
         }
         throw new BookNotFoundException("없는 책이에요 !");
+
     }
 
 
     // 5. 장바구니 빼기
     public void orderDelete(String bName) throws BookNotFoundException {
-        for(OrderList orderList : orderLists) {
-            if(orderList.getBook().getBName().equals(bName)) {
-                int index = orderLists.indexOf(orderList);
-                orderLists.remove(index);
-                EndView.successView(bName + " 이 장바구니에서 삭제됐어요 !");
-                return;
+
+        if(orderLists.size() == 0) {
+            EndView.failView("장바구니에 책이 없어요 !");
+            return;
+        }
+        else {
+            for(OrderList orderList : orderLists) {
+                if(orderList.getBook().getBName().equals(bName)) {
+                    int index = orderLists.indexOf(orderList);
+                    orderLists.remove(index);
+                    EndView.successView(bName + " 이 장바구니에서 삭제됐어요 !");
+                    return;
+                }
             }
         }
+
         throw new BookNotFoundException("없는 책이에요 !");
     }
 
