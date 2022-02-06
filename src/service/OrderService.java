@@ -1,5 +1,6 @@
 package service;
 
+import exception.BookNotFoundException;
 import exception.UserNotFoundException;
 import model.dto.Book;
 import model.dto.Customer;
@@ -57,13 +58,20 @@ public class OrderService {
     // 1. 모든 책 리스트 보기
     public void showAllBooks(){
         for(Book book : books){
-            EndView.bookView(book);
+            EndView.showBook(book);
         }
     }
 
 
     // 2. 책 검색
-    public void showBook(String bName){
+    public void showBook(String bName) throws BookNotFoundException{
+        for(Book book : books) {
+            if(book.getBName().equals(bName)) {
+                EndView.showBook(book);
+                return;
+            }
+        }
+        throw new BookNotFoundException("제목을 다시 입력해주세요 !");
     }
 
 

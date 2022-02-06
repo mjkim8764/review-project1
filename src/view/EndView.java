@@ -9,6 +9,7 @@ public class EndView {
 
     // 메뉴 출력
     public static void menuView(){
+        System.out.println();
         System.out.println(" 메뉴를 선택해주세요");
         System.out.println(" 1. 모든 책 리스트 보기");
         System.out.println(" 2. 책 검색");
@@ -30,7 +31,7 @@ public class EndView {
 
 
     // 검색한 책 출력
-    public static void bookView(Book book){
+    public static void showBook(Book book){
         System.out.println(book);
     }
 

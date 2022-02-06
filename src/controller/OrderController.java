@@ -1,5 +1,6 @@
 package controller;
 
+import exception.BookNotFoundException;
 import exception.UserNotFoundException;
 import model.dto.Book;
 import model.dto.Customer;
@@ -59,7 +60,12 @@ public class OrderController {
 
     // 2. 책 검색
     public void showBook(String bName) {
-        service.showBook(bName);
+        try {
+            service.showBook(bName);
+        } catch (BookNotFoundException e) {
+            // e.printStackTrace();
+            EndView.failView(e.getMessage());
+        }
     }
 
     // 3. 장바구니 보기
