@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class OrderList {
+public class OrderList implements Comparable<OrderList> {
 
     // 주문번호
     private int listNo;
@@ -25,5 +25,10 @@ public class OrderList {
                 .append(listNo)
                 .append("\n");
         return builder.toString() + book.toString();
+    }
+
+    @Override
+    public int compareTo(OrderList orderList) {
+        return this.getBook().getBPrice() - orderList.getBook().getBPrice();
     }
 }

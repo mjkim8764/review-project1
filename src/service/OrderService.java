@@ -8,6 +8,7 @@ import model.dto.OrderList;
 import view.EndView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrderService {
 
@@ -126,6 +127,16 @@ public class OrderService {
 
     // 6. 장바구니 가격 순으로 정렬(오름차순)
     public void orderSort(){
+
+        if(orderLists.size() == 0) {
+            EndView.failView("장바구니에 책이 없어요 !");
+            return;
+        }
+        else {
+            Collections.sort(orderLists);
+            EndView.successView("가격 순으로 정렬되었습니다 !");
+        }
+
     }
 
 

@@ -98,6 +98,7 @@ public class StartView {
                     orderController.orderDelete(bName);
                     break;
                 case "6":        // 6. 장바구니 가격 순으로 정렬(오름차순)
+                    orderController.orderSort();
                     break;
                 case "7":        // 7. 주문하기
                     break;
